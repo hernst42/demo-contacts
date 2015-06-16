@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app="contactApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script src="js/controllers.js"></script>
+</head>
+<body ng-controller="ContactListCtrl">
+<form class="form-inline">
+    <table>
+        <thead>
+        <tr>
+            <td>Vorname</td>
+            <td>Nachname</td>
+            <td>PLZ</td>
+            <td>Wohnort</td>
+            <td>Aktion</td>
+        </tr>
+        <tr>
+            <td><input ng-model="SearchSurname"></td>
+            <td><input ng-model="SearchFirstname"></td>
+            <td><input ng-model="SearchPLZ" size="6"></td>
+            <td><input ng-model="SearchCity"></td>
+            <td></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="contact in contacts" ng-style="{'background-color': (contact.Active == 'Y' ? 'green' : 'red') }">
+            <td>{{contact.Surname}}</td>
+            <td>{{contact.Firstname}}</td>
+            <td>{{contact.PLZ}}</td>
+            <td>{{contact.City}}</td>
+            <td>
+                <button ng-click="toggle(contact.Active, contact.PK)">{{contact.Active === 'Y' ? '-' : '+'}}</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+</body>
+</html>

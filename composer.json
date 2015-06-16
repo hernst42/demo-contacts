@@ -1,0 +1,16 @@
+{
+  "name": "hernst42/demo",
+  "description": "description_text",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Jürgen Henge-Ernst",
+      "email": "juergen@henge-ernst.de"
+    }
+  ],
+  "require": {
+    "phpunit/phpunit": "4.7.*",
+    "phpunit/php-code-coverage": "2.1.*"
+  }
+}
