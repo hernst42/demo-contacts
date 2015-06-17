@@ -33,7 +33,7 @@ class ContactRepository
      */
     public function findByConditions(array $conditions)
     {
-        $sql           = 'Select * FROM Contacts';
+        $sql = 'SELECT * FROM `Contacts`';
         $sqlConditions = [];
         $binds         = [];
         foreach ($conditions as $field => $value) {
@@ -41,7 +41,7 @@ class ContactRepository
             if (!preg_match('/^\w+$/', $field)) {
                 throw new \InvalidArgumentException("invalid field given!");
             }
-            $sqlConditions[]     = "$field LIKE :$field";
+            $sqlConditions[] = "`$field` LIKE :$field";
             $binds[':' . $field] = $value;
         }
         if (count($conditions) > 0) {
@@ -60,7 +60,7 @@ class ContactRepository
      */
     public function enable($id)
     {
-        $sql = 'UPDATE Contacts SET `Active` = \'Y\' WHERE PK = :id';
+        $sql = 'UPDATE `Contacts` SET `Active` = \'Y\' WHERE PK = :id';
         $stm = $this->db->prepare($sql);
         $stm->execute([':id' => $id]);
     }
@@ -72,7 +72,7 @@ class ContactRepository
      */
     public function disable($id)
     {
-        $sql = 'UPDATE Contacts SET `Active` = \'N\' WHERE PK = :id';
+        $sql = 'UPDATE `Contacts` SET `Active` = \'N\' WHERE PK = :id';
         $stm = $this->db->prepare($sql);
         $stm->execute([':id' => $id]);
     }
